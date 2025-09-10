@@ -3,14 +3,34 @@ body {
     overflow-x: hidden;
 }
 
-.navbar {
+.custom-navbar {
+    background-color: #582f0e;
+    height: 60px;
+    display: flex;
+    color: #ffe6a7;
+    align-items: center;
+    justify-content: center;
     z-index: 1030;
-    height: 50px;
-    line-height: 50px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.custom-navbar .navbar-brand {
+    color: #ffe6a7;
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 0;
+}
+
+.custom-navbar .navbar-brand:hover {
+    color: #ffba08;
 }
 
 .hero {
-    background-image: url(../kuvat/pollo.jpg);
+    background-image: url(../kuvat/bird.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
