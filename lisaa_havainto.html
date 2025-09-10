@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="tyylit.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <title>Havis</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary py-3 fixed-top">
+        <div class="container">
+                <a href="#" class="navbar-brand text-light">Havaintovihko</a>
+        </div>
+    </nav>
+    <section id="lisaa-havainto" class="hero">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h3 class="mb-3 text-center">Lisää havainto</h3>
+                        <form id="havainto-form">
+                            <div class="mb-3">
+                                <label for="lintulaji" class="form-label">Lintulaji</label>
+                                <input type="text" class="form-control" id="lintulaji" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Paikka</label>
+                                <div id="map" style="height: 300px"></div>
+                                <small class="form-text text-muted">Klikkaa karttaa merkitäksesi havaintopaikan.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="paivamaara" class="form-label">Päivämäärä</label>
+                                <input type="date" class="form-control" id="paivamaara" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Tallenna havainto</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="add.js"></script>
+</body>
+</html>
