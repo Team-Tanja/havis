@@ -14,6 +14,10 @@ map.on('click', function(e) {
     marker = L.marker(e.latlng).addTo(map);
 });
 
+// Viestielementit
+const paikkaVirhe = document.getElementById('paikka-virhe');
+const successViesti = document.getElementById('success-viesti');
+
 // Lomakkeen lähetys 
 document.getElementById('havainto-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -21,19 +25,19 @@ document.getElementById('havainto-form').addEventListener('submit', function(e) 
     const bird = document.getElementById('lintulaji').value;
     const date = document.getElementById('paivamaara').value;
 
+    paikkaVirhe.style.display = 'none';
+    successViesti.style.display = 'none';
+
     if (!marker) {
-        alert('Valitse havaintopaikka kartalta!');
+        paikkaVirhe.textContent = 'Valitse havaintopaikka kartalta!';
+        paikkaVirhe.style.display = 'block'
         return;
     }
 
     const spot = marker.getLatLng();
 
     // Havainto-objekti
-    const havainto = {
-        bird,
-        date,
-        spot
-    };
+    const havainto = { bird, date, spot };
 
     // Hae vanhat havainnot localStoragesta
     let havainnot = JSON.parse(localStorage.getItem('havainnot')) || [];
@@ -42,7 +46,10 @@ document.getElementById('havainto-form').addEventListener('submit', function(e) 
     // Tallenna takaisin
     localStorage.setItem('havainnot', JSON.stringify(havainnot));
 
-    alert('Havainto tallennettu!');
+    successViesti.textContent = 'Havainto tallennettu!';
+    successViesti.className = 'text-success mt-2';
+    successViesti.style.display = 'block';
+
     this.reset(); // tyhjennä lomake
     if (marker) map.removeLayer(marker);
 });

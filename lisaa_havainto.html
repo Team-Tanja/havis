@@ -11,9 +11,9 @@
     <title>Havis</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-primary py-3 fixed-top">
+    <nav class="navbar custom-navbar fixed-top">
         <div class="container">
-                <a href="index.html" class="navbar-brand text-light">Havaintovihko</a>
+                <a href="index.html" class="navbar-brand">Havaintovihko</a>
         </div>
     </nav>
     <section id="lisaa-havainto" class="hero">
@@ -31,12 +31,14 @@
                                 <label class="form-label">Paikka</label>
                                 <div id="map" style="height: 300px"></div>
                                 <small class="form-text text-muted">Klikkaa karttaa merkitäksesi havaintopaikan.</small>
+                                <div id="paikka-virhe" class="text-danger mt-1" style="display: none;"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="paivamaara" class="form-label">Päivämäärä</label>
                                 <input type="date" class="form-control" id="paivamaara" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Tallenna havainto</button>
+                            <div id="success-viesti" class="mt-2" style="display: none;"></div>
                         </form>
                     </div>
                 </div>
