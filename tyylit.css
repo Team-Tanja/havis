@@ -1,5 +1,34 @@
-body::before {
-    display: block;
-    content: '';
-    height: 80px;
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.navbar {
+    z-index: 1030;
+    height: 50px;
+    line-height: 50px;
+}
+
+.hero {
+    background-image: url(../kuvat/pollo.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    padding-top: 0;
+    padding-left: 50px;
+}
+
+.card {
+    cursor: pointer;
+    transition: transform 0.2s;
+    max-width: 300px;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
