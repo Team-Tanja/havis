@@ -23,6 +23,7 @@ document.getElementById('havainto-form').addEventListener('submit', function(e) 
     e.preventDefault();
 
     const bird = document.getElementById('lintulaji').value;
+    const placeName = document.getElementById('paikannimi').value;
     const date = document.getElementById('paivamaara').value;
 
     paikkaVirhe.style.display = 'none';
@@ -37,7 +38,7 @@ document.getElementById('havainto-form').addEventListener('submit', function(e) 
     const spot = marker.getLatLng();
 
     // Havainto-objekti
-    const havainto = { bird, date, spot };
+    const havainto = { bird, placeName, date, spot };
 
     // Hae vanhat havainnot localStoragesta
     let havainnot = JSON.parse(localStorage.getItem('havainnot')) || [];
