@@ -30,7 +30,7 @@ function searchRenderList(havainnot) {
 
   havainnot.forEach(havainto => {
     const item = document.createElement("li");
-    item.textContent = `${havainto.bird} – ${havainto.spot.lat}, ${havainto.spot.lng} (${havainto.date})`;
+    item.textContent = `${havainto.bird} – ${havainto.placeName}, (${havainto.date})`;
     listaelementti.appendChild(item);
   });
 }
@@ -54,7 +54,7 @@ function searchUpdateMapMarkers(havainnot) {
   havainnot.forEach(havainto => {
     const marker = L.marker([havainto.spot.lat, havainto.spot.lng])
       .addTo(map)
-      .bindPopup(`${havainto.laji} – ${havainto.paikka}`);
+      .bindPopup(`${havainto.bird} – ${havainto.placeName} – ${havainto.date}`);
     markers.push(marker);
   });
 

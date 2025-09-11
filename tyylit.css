@@ -59,3 +59,11 @@ body {
 .card:hover {
     transform: scale(1.05);
 }
+
+h2 {
+    color: #582f0e;
+}
+
+.container.no-left-padding {
+    padding-left: 0 !important;
+}
