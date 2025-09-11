@@ -44,9 +44,16 @@ body {
 }
 
 .card {
+    background-color: #ffe6a7;
+    color: #582f0e;
+    border: 2px solid #582f0e;
     cursor: pointer;
     transition: transform 0.2s;
     max-width: 300px;
+}
+
+.card a, .card h5, .card p {
+    color: #582f0e;
 }
 
 .card:hover {
