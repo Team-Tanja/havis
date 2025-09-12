@@ -1,92 +1,125 @@
 // Hae lintua -toiminto
+(function() {
 
-// Globaalit muuttujat
-let map; // Leaflet-kartta
-let markers = []; // Tallennetaan markerit, jotta ne voidaan poistaa myöhemmin
+  // Kartta ja markerit vain tämän tiedoston sisällä
+  let speciesMap; 
+  let speciesMarkers = []; 
 
-// Alustetaan hakukomponentti
-function searchInit() {
-  console.log("searchSpecies.js ladattu");
-  // Kartta alustetaan heti
-  searchInitMap();
-}
-
-// Haetaan havainnot localStoragesta
-function getStoredObservations() {
-  return JSON.parse(localStorage.getItem("havainnot")) || [];
-}
-
-// Suodatetaan havainnot hakusanan perusteella
-function searchFilterData(data, hakusana) {
-  return data.filter(havainto =>
-    havainto.bird.toLowerCase().includes(hakusana.toLowerCase())
-  );
-}
-
-// Näytetään hakutulokset listana
-function searchRenderList(havainnot) {
-  const listaelementti = document.getElementById("hakutulokset");
-  listaelementti.innerHTML = "";
-
-  havainnot.forEach(havainto => {
-    const item = document.createElement("li");
-    item.textContent = `${havainto.bird} – ${havainto.placeName}, (${havainto.date})`;
-    listaelementti.appendChild(item);
-  });
-}
-
-// Alustetaan kartta (vain kerran)
-function searchInitMap() {
-  map = L.map("kartta").setView([60.192059, 24.945831], 6); // Kartan luonti, Helsinki
-  // Karttalaattojen lisäys
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap"
-  }).addTo(map);
-}
-
-// Päivitetään markerit kartalle
-function searchUpdateMapMarkers(havainnot) {
-  // Poistetaan vanhat markerit
-  markers.forEach(marker => map.removeLayer(marker));
-  markers = [];
-
-  // Lisätään uudet markerit
-  havainnot.forEach(havainto => {
-    const marker = L.marker([havainto.spot.lat, havainto.spot.lng])
-      .addTo(map)
-      .bindPopup(`${havainto.bird} – ${havainto.placeName} – ${havainto.date}`);
-    markers.push(marker);
-  });
-
-  // Zoomataan kaikkiin markereihin
-  if (markers.length > 0) {
-    const group = new L.featureGroup(markers);
-    map.fitBounds(group.getBounds());
+  // Alustetaan hakutoiminto ja kartta
+  function searchInit() {
+    console.log("searchSpecies.js ladattu");
+    initMap();
   }
-}
 
-// DOM (html rakenne)-valmiina: kytketään hakunappi
-document.addEventListener("DOMContentLoaded", () => {
-  searchInit();
+  // Haetaan havainnot localStoragesta
+  function getStoredObservations() {
+    return JSON.parse(localStorage.getItem("havainnot")) || [];
+  }
 
-  const hakunappi = document.getElementById("hakunappi");
-  hakunappi.addEventListener("click", () => {
-    const hakusana = document.getElementById("hakukentta").value.trim();
-    const data = getStoredObservations();
+  // Suodatetaan havainnot hakusanan perusteella
+  function filterObservations(data, hakusana) {
+    return data.filter(havainto =>
+      havainto.bird.toLowerCase().includes(hakusana.toLowerCase())
+    );
+  }
 
-    if (data.length === 0) {
-      alert("Ei havaintoja tallennettuna!");
+  // Näytetään hakutulokset listana
+  function renderObservationList(havainnot) {
+    const listElement = document.getElementById("hakutulokset");
+    listElement.innerHTML = "";
+
+    if (havainnot.length === 0) {
+      const noResultsItem = document.createElement("li");
+      noResultsItem.textContent = "Ei hakutuloksia tälle lajille.";
+      noResultsItem.classList.add("list-group-item", "text-danger", "fw-bold");
+      listElement.appendChild(noResultsItem);
       return;
     }
 
-    const tulokset = searchFilterData(data, hakusana);
+    havainnot.forEach(havainto => {
+      const item = document.createElement("li");
+      item.textContent = `${havainto.bird} – ${havainto.placeName}, (${havainto.date})`;
+      item.classList.add("list-group-item");
+      listElement.appendChild(item);
+    });
+  }
 
-    if (tulokset.length === 0) {
-      alert("Ei hakutuloksia tälle lajille.");
-      return;
+  // Alustetaan Leaflet-kartta
+  function initMap() {
+
+    // Luodaan uusi Leaflet-kartta ja kiinnitetään se HTML-elementtiin, jonka id on "kartta".
+    // setView([lat, lng], zoom) määrittää aloitusnäkymän koordinaatit ja zoom-tason.
+    // Tässä käytetään Helsingin koordinaatteja ja zoom-tasoa 6 (näkyy koko Suomi).
+    speciesMap = L.map("kartta").setView([60.192059, 24.945831], 6);
+
+    // Lisätään karttalaatat (map tiles) OpenStreetMap-palvelusta.
+    // {s} = palvelimen alidomain (a, b, c), {z} = zoom-taso, {x} ja {y} = laattarivin ja -sarakkeen koordinaatit.
+    // Tämä URL on Leafletin oletusesimerkki OSM:n käyttöön.
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    
+      // Attribution on tekijänoikeus- ja lähdemerkintä, joka näytetään kartan kulmassa.
+      // OpenStreetMap vaatii tämän, kun sen karttalaattoja käytetään.
+      attribution: "© OpenStreetMap"
+
+    // .addTo(speciesMap) lisää tämän laattakerroksen juuri luotuun karttaobjektiin.
+    }).addTo(speciesMap);
+  }
+
+  // Päivitetään markerit kartalle
+  function updateMapMarkers(havainnot) {
+
+    // Poistetaan kaikki vanhat markerit kartalta
+    // Käydään läpi speciesMarkers-taulukko ja poistetaan jokainen marker kartasta
+    speciesMarkers.forEach(marker => speciesMap.removeLayer(marker));
+
+    // Tyhjennetään taulukko, jotta siihen voidaan lisätä uudet markerit
+    speciesMarkers = [];
+
+    // Lisätään uudet markerit jokaisesta havainnosta
+    havainnot.forEach(havainto => {
+
+      // Luodaan uusi marker havainnon koordinaateilla (lat, lng)
+      const marker = L.marker([havainto.spot.lat, havainto.spot.lng])
+
+        // Lisätään marker kartalle
+        .addTo(speciesMap)
+
+        // Liitetään markerin popup-ikkunaan teksti, jossa laji, paikan nimi ja päivämäärä
+        .bindPopup(`${havainto.bird} – ${havainto.placeName} – ${havainto.date}`);
+
+      // Tallennetaan marker taulukkoon, jotta se voidaan myöhemmin poistaa tai käsitellä
+      speciesMarkers.push(marker);
+    });
+
+    // Jos markereita on lisätty, zoomataan niin että kaikki näkyvät kartalla
+    if (speciesMarkers.length > 0) {
+
+      // Luodaan Leafletin featureGroup kaikista markereista
+      const group = new L.featureGroup(speciesMarkers);
+
+      // Sovitetaan kartan näkymä niin, että kaikki markerit mahtuvat näkyviin
+      speciesMap.fitBounds(group.getBounds());
     }
+  }
 
-    searchRenderList(tulokset);
-    searchUpdateMapMarkers(tulokset);
+  // Kun DOM on valmis
+  document.addEventListener("DOMContentLoaded", () => {
+    searchInit();
+
+    const hakunappi = document.getElementById("hakunappi");
+    hakunappi.addEventListener("click", () => {
+      const hakusana = document.getElementById("hakukentta").value.trim();
+      const data = getStoredObservations();
+
+      if (data.length === 0) {
+        renderObservationList([]); // Näyttää "Ei hakutuloksia"
+        return;
+      }
+
+      const tulokset = filterObservations(data, hakusana);
+      renderObservationList(tulokset);
+      updateMapMarkers(tulokset);
+    });
   });
-});
+
+})();

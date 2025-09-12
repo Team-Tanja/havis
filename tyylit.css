@@ -68,6 +68,8 @@ h2 {
     color: #582f0e;
 }
 
-.container.no-left-padding {
-    padding-left: 0 !important;
+.kartta-card {
+    width: 300px;
+    max-width: 300px;     
 }
+
