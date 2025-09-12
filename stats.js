@@ -9,16 +9,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const vuosi = document.getElementById('vuosi').value;
         if (!vuosi) {
             vuosiVirhe.textContent = 'Anna vuosi!';
-            vuosiVirhe.style.display = 'block';
+            vuosiVirhe.style.display = 'block'
             return;
         }
 
         // Haetaan havainnot localStoragesta
-        let havainnot = JSON.parse(localStorage.getItem('havainnot')) || [];
+        const havainnot = JSON.parse(localStorage.getItem('havainnot')) || [];
 
-        // Suodata valitun vuoden mukaan
+        // Suodata valitun vuoden havainnot
         let vuodenHavainnot = havainnot.filter(h => {
-            return h.date && h.date.startsWith(vuosi);
+            const hDate = new Date(h.date);
+            return hDate.getFullYear() === parseInt(vuosi);
         });
 
         if (vuodenHavainnot.length === 0) {
@@ -28,20 +29,22 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Kerää uniikit lajit
-        let lajit = [...new Set(vuodenHavainnot.map(h => h.bird.trim()))];
-        lajit.sort((a, b) => a.localeCompare(b, 'fi')); //aakkosjärjestys
+        // Järjestetään päivämäärän mukaan nousevasti
+        vuodenHavainnot.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-        // Päivitä näkymä
-        tuloksetDiv.style.display ='block';
-        lajimaara.textContent = `Vuonna ${vuosi} havaittiin ${lajit.length} lajia:`;
-
+        // Muodostetaan lista päivämäärä + lintulaji
         lajilista.innerHTML = '';
-        lajit.forEach(laji => {
+        vuodenHavainnot.forEach(h => {
+            const d = new Date(h.date);
+            const paiva = String(d.getDate()).padStart(2,"0");
+            const kk = String(d.getMonth() + 1).padStart(2, "0");
             const li = document.createElement('li');
             li.className = 'list-group-item';
-            li.textContent = laji;
+            li.textContent = `${paiva}.${kk}. ${h.bird}`;
             lajilista.appendChild(li);
         });
+
+        tuloksetDiv.style.display = 'block';
+        lajimaara.textContent = `Vuonna ${vuosi} havaintoja yhteensä ${vuodenHavainnot.length}:`;
     });
 });
