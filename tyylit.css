@@ -38,6 +38,10 @@ body {
     align-items: center;
 }
 
+#havainto-card {
+    margin-top: 80px;
+}
+
 .container {
     padding-top: 0;
     padding-left: 50px;
