@@ -1,31 +1,47 @@
-// Haetaan havainnot localStoragesta
-let havainnot = JSON.parse(localStorage.getItem('havainnot')) || [];
+document.addEventListener('DOMContentLoaded', function () {
+    const naytaBtn = document.getElementById('naytaLajit');
+    const tuloksetDiv = document.getElementById('tulokset');
+    const lajimaara = document.getElementById('lajimaara');
+    const lajilista = document.getElementById('lajilista');
+    const vuosiVirhe = document.getElementById('vuosi-virhe');
 
-//Lasketaan havainnot vuosittain
-let tilastot = {};
+    naytaBtn.addEventListener('click', () => {
+        const vuosi = document.getElementById('vuosi').value;
+        if (!vuosi) {
+            vuosiVirhe.textContent = 'Anna vuosi!';
+            vuosiVirhe.style.display = 'block';
+            return;
+        }
 
-havainnot.forEach(h => {
-    let year = new Date(h.date).getFullYear(); // Otetaan vuosi päivämäärästä
-    if (!tilastot[year]) {
-        tilastot[year] = 0;
-    }
-    tilastot[year]++;
-});
+        // Haetaan havainnot localStoragesta
+        let havainnot = JSON.parse(localStorage.getItem('havainnot')) || [];
 
-// Järjestetään vuodet (uusin ensin)
-let vuodet = Object.keys(tilastot).sort((a, b) => b - a);
+        // Suodata valitun vuoden mukaan
+        let vuodenHavainnot = havainnot.filter(h => {
+            return h.date && h.date.startsWith(vuosi);
+        });
 
-// Renderöidään lista
-const lista = document.getElementById('tilasto-lista');
-vuodet.forEach(year => {
-    let li = document.createElement('li');
-    li.className = 'list-group-item d-flex justify-content-between align-items-center';
-    li.textContent = year;
+        if (vuodenHavainnot.length === 0) {
+            tuloksetDiv.style.display = 'block';
+            lajimaara.textContent = `Vuodelle ${vuosi} ei löytynyt havaintoja.`;
+            lajilista.innerHTML = '';
+            return;
+        }
 
-    let badge = document.createElement('span');
-    badge.className = 'badge bg-primary rounded-pill';
-    badge.textContent = tilastot[year] + ' havaintoa';
+        // Kerää uniikit lajit
+        let lajit = [...new Set(vuodenHavainnot.map(h => h.bird.trim()))];
+        lajit.sort((a, b) => a.localeCompare(b, 'fi')); //aakkosjärjestys
 
-    li.appendChild(badge);
-    lista.appendChild(li)
+        // Päivitä näkymä
+        tuloksetDiv.style.display ='block';
+        lajimaara.textContent = `Vuonna ${vuosi} havaittiin ${lajit.length} lajia:`;
+
+        lajilista.innerHTML = '';
+        lajit.forEach(laji => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.textContent = laji;
+            lajilista.appendChild(li);
+        });
+    });
 });
