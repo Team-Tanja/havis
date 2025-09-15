@@ -1,6 +1,15 @@
 // Hae lintua -toiminto
 (function() {
 
+  // Päivämäärä suomalaisittain
+  function formatDateFi(dateStr, leadingZeros = false) {
+    const dateObj = new Date(dateStr);
+    return dateObj.toLocaleDateString('fi-FI', leadingZeros
+      ? { day: '2-digit', month: '2-digit', year: 'numeric' }
+      : undefined
+    );
+  }
+
   // Kartta ja markerit vain tämän tiedoston sisällä
   let speciesMap; 
   let speciesMarkers = []; 
@@ -38,7 +47,7 @@
 
     havainnot.forEach(havainto => {
       const item = document.createElement("li");
-      item.textContent = `${havainto.bird} – ${havainto.placeName}, (${havainto.date})`;
+      item.textContent = `${havainto.bird} – ${havainto.placeName}, (${formatDateFi(havainto.date, true)})`;
       item.classList.add("list-group-item");
       listElement.appendChild(item);
     });
@@ -85,7 +94,7 @@
         .addTo(speciesMap)
 
         // Liitetään markerin popup-ikkunaan teksti, jossa laji, paikan nimi ja päivämäärä
-        .bindPopup(`${havainto.bird} – ${havainto.placeName} – ${havainto.date}`);
+        .bindPopup(`${havainto.bird} – ${havainto.placeName} – ${formatDateFi(havainto.date, true)}`);
 
       // Tallennetaan marker taulukkoon, jotta se voidaan myöhemmin poistaa tai käsitellä
       speciesMarkers.push(marker);

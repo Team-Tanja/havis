@@ -3,6 +3,15 @@
 
   let yearlyMap;           // Leaflet-kartta
   let yearlyMarkers = [];  // Lista kartalla näkyvistä markkereista
+  
+  // Päivämäärä suomalaisittain
+  function formatDateFi(dateStr, leadingZeros = false) {
+    const dateObj = new Date(dateStr);
+    return dateObj.toLocaleDateString('fi-FI', leadingZeros
+      ? { day: '2-digit', month: '2-digit', year: 'numeric' }
+      : undefined
+    );
+  }
 
   // Alustetaan kartta
   function initYearlyMap() {
@@ -51,7 +60,7 @@
     data.forEach(havainto => {
       const marker = L.marker([havainto.spot.lat, havainto.spot.lng])
         .addTo(yearlyMap)
-        .bindPopup(`${havainto.bird} – ${havainto.placeName} – ${havainto.date}`);
+        .bindPopup(`${havainto.bird} – ${havainto.placeName} – ${formatDateFi(havainto.date, true)}`);
       yearlyMarkers.push(marker);
     });
 
