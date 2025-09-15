@@ -30,7 +30,7 @@ body {
 }
 
 .hero {
-    background-image: url(../kuvat/bird.jpg);
+    background-image: url(kuvat/bird.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
