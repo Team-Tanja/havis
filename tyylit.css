@@ -1,3 +1,84 @@
+@media (max-width: 1050px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: none !important;
+    }
+
+    .navbar-expand-lg .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-expand-lg .navbar-collapse.show {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background-color: #582f0e;
+        width: 200px;
+        padding: 0.5rem 1rem;
+        border-radius: 0 0 5px 5px;
+        z-index: 1040;
+    }
+}
+
+@media (min-width: 1051) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        width: auto;
+        background: none;
+        padding: 0;
+        border-radius: 0;
+    }
+    
+    .navbar-expand-lg .navbar-toggler {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .custom-navbar .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 991.98px) {
+    .custom-navbar .navbar-brand {
+        position: static;
+        transform: none;
+        margin-left: 1rem;
+    }
+
+    .collapse.navbar-collapse {
+        position: absolute !important;
+        right: 0 !important;
+        top: 60px;
+        background-color: #582f0e;
+        width: 200px;
+        z-index: 1040;
+        padding: 0.5rem 1rem;
+        border-radius: 0 0 5px 5px;
+        flex-direction: column;
+        transform: none;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    #havainto-card {
+        width: 90%;
+        max-width: none;
+    }
+}
+
 body {
     margin: 0;
     padding-top: 60px;
@@ -10,7 +91,6 @@ body {
     display: flex;
     color: #ffe6a7;
     align-items: center;
-    justify-content: center;
     z-index: 1030;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     position: fixed;
@@ -22,12 +102,33 @@ body {
 .custom-navbar .navbar-brand {
     color: #ffe6a7;
     font-size: 1.8rem;
-    text-align: center;
-    margin: 0;
+    transition: all 0.3s ease;
 }
 
 .custom-navbar .navbar-brand:hover {
     color: #ffba08;
+}
+
+.custom-navbar .nav-link {
+    color: #ffe6a7;
+}
+
+.custom-navbar .nav-link:hover {
+    color: #ffba08;
+}
+
+.navbar-toggler {
+    border: none;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0;
+    background: transparent;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,230,167, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
 }
 
 .hero {
@@ -75,6 +176,13 @@ body {
     transform: scale(1.05);
 }
 
+#havainto-card {
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
 h2 {
     color: #582f0e;
 }
@@ -88,4 +196,3 @@ h2 {
     font-size: 0.9rem;
     min-height: 1.2em;
 }
-
