@@ -192,6 +192,13 @@ h2 {
     max-width: 300px;     
 }
 
+@media (max-width: 768px) {
+  .kartta-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 #vuosiInfo {
     font-size: 0.9rem;
     min-height: 1.2em;
