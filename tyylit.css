@@ -40,8 +40,19 @@ body {
     justify-content: center;
 }
 
-#havainto-card {
-    margin-top: 50px;
+.hero-index {
+    background-image: url(kuvat/bird.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 80px; 
+}
+
+.hero-cards {
+    margin-left: 10%;
 }
 
 .container {
