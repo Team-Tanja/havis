@@ -109,6 +109,7 @@ body {
     right: 0;
 }
 
+/* Navbarin otsikko */
 .custom-navbar .navbar-brand {
     position: absolute !important;
     left: 50% !important;
