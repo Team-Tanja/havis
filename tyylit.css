@@ -44,15 +44,6 @@
         transform: translateX(-50%);
     }
 }
-
-
-@media (max-width: 991.98px) {
-    .custom-navbar .navbar-brand {
-        position: static;
-        transform: none;
-        margin-left: 1rem;
-    }
-
     .collapse.navbar-collapse {
         position: absolute !important;
         right: 0 !important;
@@ -71,7 +62,6 @@
         margin: 0;
         padding: 0;
     }
-}
 
 @media (max-width: 576px) {
     #havainto-card {
@@ -221,10 +211,10 @@ h2 {
   overflow-y: auto;  
 }
 
-/* Mobiilinäkymän navbarin muotoilu */
+/* Mobiilinäkymän navbarin ja yläreunan korjaukset */
 @media (max-width: 991.98px) {
 
-  /* Navbarin perusasetukset mobiilissa */
+  /* Navbarin asetukset mobiilissa */
   .custom-navbar {
     position: relative;
     height: 60px;
@@ -241,7 +231,7 @@ h2 {
     margin-left: 0 !important;
   }
 
-  /* Hampurilaisvalikon sijoittelu oikeaan reunaan */
+  /* Hampurilaisvalikon sijoitus oikeaan reunaan */
   .custom-navbar .navbar-toggler {
     position: absolute;
     right: 1rem;
@@ -249,28 +239,30 @@ h2 {
     transform: translateY(-50%);
   }
 
-  /* Poistetaan mahdollinen ylimääräinen padding container-fluidista mobiilissa */
+  /* Poistaa ylimääräisen paddingin container-fluidista mobiilissa */
   .custom-navbar .container-fluid {
     padding-top: 0;
     padding-bottom: 0;
   }
-}
 
-/* Poistaa ensimmäisen elementin yläreunamarginaalin mobiilissa */
-@media (max-width: 991.98px) {
+  /* Poistaa ensimmäisen sisältöelementin ylämarginaalin */
   .hero, .hero-index {
     margin-top: 0 !important;
   }
 
-  h2:first-child {
-    margin-top: 0 !important;
+  /* Varmistus että body ei työnnä sisältöä liikaa alas */
+  body {
+    padding-top: 60px;
+    margin: 0;
   }
 }
 
-@media (max-width: 991.98px) {
-  .container {
-    padding-top: 0 !important;
+/* Mobiilinäkymän body-korjaus */
+  @media (max-width: 991.98px) {
+  body {
+    padding-top: 0 !important; /* Poistaa ylimääräisen tilan navin ja sisällön välistä */
   }
 }
+
 
 
