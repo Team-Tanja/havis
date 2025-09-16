@@ -60,12 +60,6 @@
     .navbar-expand-lg .navbar-toggler {
         display: none;
     }
-
-    .custom-navbar .navbar-brand {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
 }
 
 @media (max-width: 991.98px) {
@@ -116,9 +110,9 @@ body {
 }
 
 .custom-navbar .navbar-brand {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     color: #ffe6a7;
     font-size: 1.8rem;
     transition: all 0.3s ease;
