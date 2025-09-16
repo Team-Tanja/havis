@@ -181,7 +181,7 @@ body {
     width: 300px;
     max-width: 300px;
     min-width: 300px;
-    margin: 0 auto;
+    margin-left: -30%;
 }
 
 h2 {
