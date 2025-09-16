@@ -256,8 +256,6 @@ h2 {
     margin: 0;
   }
 }
-
-/* Mobiilinäkymän body-korjaus */
   @media (max-width: 991.98px) {
   body {
     padding-top: 0 !important; /* Poistaa ylimääräisen tilan navin ja sisällön välistä */
