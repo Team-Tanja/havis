@@ -215,3 +215,8 @@ h2 {
     font-size: 0.9rem;
     min-height: 1.2em;
 }
+
+#hakutulokset {
+  max-height: 210px;
+  overflow-y: auto;  
+}
