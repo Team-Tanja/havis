@@ -217,6 +217,60 @@ h2 {
 }
 
 #hakutulokset {
-  max-height: 210px;
+  max-height: 2x;
   overflow-y: auto;  
 }
+
+/* Mobiilinäkymän navbarin muotoilu */
+@media (max-width: 991.98px) {
+
+  /* Navbarin perusasetukset mobiilissa */
+  .custom-navbar {
+    position: relative;
+    height: 60px;
+    padding-top: 0;
+    padding-bottom: 0;
+    justify-content: center;
+  }
+
+  /* Otsikon keskitys mobiilissa */
+  .custom-navbar .navbar-brand {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-left: 0 !important;
+  }
+
+  /* Hampurilaisvalikon sijoittelu oikeaan reunaan */
+  .custom-navbar .navbar-toggler {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Poistetaan mahdollinen ylimääräinen padding container-fluidista mobiilissa */
+  .custom-navbar .container-fluid {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Poistaa ensimmäisen elementin yläreunamarginaalin mobiilissa */
+@media (max-width: 991.98px) {
+  .hero, .hero-index {
+    margin-top: 0 !important;
+  }
+
+  h2:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .container {
+    padding-top: 0 !important;
+  }
+}
+
+
