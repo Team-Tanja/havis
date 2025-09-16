@@ -191,15 +191,17 @@ body {
 }
 
 /* Kortti isolla näytöllä hieman vasemmalla*/
-#havainto-card {
-    width: 300px;
-    max-width: 300px;
-    min-width: 300px;
-    margin-left: -30%;
+@media (min-width: 992px) {
+    #havainto-card {
+        width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        margin-left: -30% !important;
+    }
 }
 
 /* Kortti keskitetään pienillä näytöillä*/
-@media (max-width: 576px) {
+@media (max-width: 991.98px) {
     #havainto-card {
         margin: 0 auto;
         width: 90%;
