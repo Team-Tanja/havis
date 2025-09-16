@@ -157,6 +157,17 @@ body {
     margin-left: 10%;
 }
 
+@media (max-width: 991.98px) {
+  .hero-cards {
+    margin-left: 0;       
+    width: 100%;          
+  }
+
+  .hero-cards .col-12 {
+    max-width: 100%;      
+  }
+}
+
 .container {
     padding-top: 0;
 }
