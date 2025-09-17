@@ -143,6 +143,14 @@ h2 {
     }
 }
 
+/* Havainnot vuosittain -sivun container desktop */
+@media (min-width: 992px) {
+  #havainnot-vuosittain .container {
+    margin-left: 25%; /* sisältöä oikealle */
+    max-width: 70%;
+  }
+}
+
 /* Kartta-kortti */
 .kartta-card {
     width: 300px;
