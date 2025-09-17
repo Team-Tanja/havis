@@ -143,6 +143,38 @@ h2 {
     }
 }
 
+/* Mobiilissa marginaalin lisäys */
+@media (max-width: 991.98px) {
+  /* Etusivu */
+  .hero-index .card {
+    margin-left: 10%;
+    margin-right: 5%;
+    width: 80%;
+  }
+
+  /* Hae lintua -sivu */
+  #lajihaku h2 {
+    margin-left: 10%;
+    margin-right: 5%;
+  }
+  #lajihaku .card {
+    margin-left: 10%;
+    margin-right: 5%;
+    width: 80%;
+  }
+
+  /* Havainnot vuosittain -sivu */
+  #havainnot-vuosittain h2 {
+    margin-left: 10%;
+    margin-right: 5%;
+  }
+  #havainnot-vuosittain .card {
+    margin-left: 10%;
+    margin-right: 5%;
+    width: 80%;
+  }
+}
+
 /* Havainnot vuosittain -sivun container desktop */
 @media (min-width: 992px) {
   #havainnot-vuosittain .container {
