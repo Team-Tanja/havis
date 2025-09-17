@@ -1,3 +1,4 @@
+/* Havainto -kortti */
 @media (max-width: 576px) {
     #havainto-card {
         width: 90%;
@@ -5,11 +6,14 @@
     }
 }
 
+/* Perusasetukset */
 body {
     margin: 0;
     overflow-x: hidden;
+    padding-top: 60px;
 }
 
+/* Navbar */
 .custom-navbar {
     background-color: #582f0e;
     height: 60px;
@@ -24,6 +28,7 @@ body {
     right: 0;
 }
 
+/* Navbarin otsikko */
 .custom-navbar .navbar-brand {
     color: #ffe6a7;
     font-size: 1.8rem;
@@ -42,6 +47,7 @@ body {
     color: #ffba08;
 }
 
+/* Hamburger-nappi */
 .navbar-toggler {
     border: none;
     position: absolute;
@@ -52,11 +58,8 @@ body {
     background: transparent;
 }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,230,167, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/ %3E%3C/svg%3E");
-}
-
-.hero {
+/* Hero-osio */
+.hero, .hero-index {
     background-image: url(kuvat/bird.jpg);
     background-size: cover;
     background-position: center;
@@ -67,35 +70,21 @@ body {
 }
 
 .hero-index {
-    background-image: url(kuvat/bird.jpg);
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     padding-top: 80px; 
+}
+
+/* Korttien kontaineri */
+.container {
+    padding-top: 0;
 }
 
 .hero-cards {
     margin-left: 10%;
 }
 
-@media (max-width: 991.98px) {
-  .hero-cards {
-    margin-left: 0;       
-    width: 100%;          
-  }
-
-  .hero-cards .col-12 {
-    max-width: 100%;      
-  }
-}
-
-.container {
-    padding-top: 0;
-}
-
+/* Korttien tyyli */
 .card {
     background-color: #ffe6a7;
     color: #582f0e;
@@ -112,17 +101,35 @@ body {
     transform: scale(1.05);
 }
 
-#havainto-card {
-    width: 300px;
-    max-width: 300px;
-    min-width: 300px;
-    margin: 0 auto;
+/* Kortti isolla näytöllä hieman vasemmalla*/
+@media (min-width: 992px) {
+    #havainto-card {
+        width: 300px;
+        max-width: 300px;
+        min-width: 300px;
+        margin-left: -30% !important;
+    }
+}
+
+/* Kortti keskitetään pienillä näytöillä*/
+@media (max-width: 991.98px) {
+    #havainto-card {
+        margin: 0 auto;
+        width: 90%;
+        max-width: 300px;
+        min-width: auto;
+    }
+
+    .hero-cards {
+        margin-left: 0;
+    }
 }
 
 h2 {
     color: #582f0e;
 }
 
+/* Kartta-kortti */
 .kartta-card {
     width: 300px;
     max-width: 300px;     
@@ -135,6 +142,7 @@ h2 {
   }
 }
 
+/* Lisäelementit */
 #vuosiInfo {
     font-size: 0.9rem;
     min-height: 1.2em;
@@ -149,7 +157,7 @@ h2 {
 /* Mobiili */
 @media (max-width: 991.98px) {
 
-  /* Navbarin perusasetukset mobiilissa */
+  /* Navbarin perusasetukset */
   .custom-navbar {
     position: relative;
     height: 60px;
@@ -158,7 +166,7 @@ h2 {
     justify-content: center;
   }
 
-  /* Otsikon keskitys mobiilissa */
+  /* Otsikon keskitys */
   .custom-navbar .navbar-brand {
     position: absolute !important;
     left: 50% !important;
@@ -204,7 +212,6 @@ h2 {
   /* Poistaa ylimääräisen tilan navin ja sisällön välistä */
   body {
     padding-top: 0 !important;
-    margin: 0;
   }
 
   /* Poistaa ensimmäisen sisältöelementin ylämarginaalin */
