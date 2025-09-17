@@ -1,68 +1,3 @@
-@media (max-width: 1050px) {
-    .navbar-expand-lg .navbar-collapse {
-        display: none !important;
-    }
-
-    .navbar-expand-lg .navbar-toggler {
-        display: block;
-    }
-
-    .navbar-expand-lg .navbar-collapse.show {
-        display: flex !important;
-        flex-direction: column;
-        position: absolute;
-        right: 0;
-        top: 60px;
-        background-color: #582f0e;
-        width: 200px;
-        padding: 0.5rem 1rem;
-        border-radius: 0 0 5px 5px;
-        z-index: 1040;
-    }
-}
-
-@media (min-width: 1051) {
-    .navbar-expand-lg .navbar-collapse {
-        display: flex !important;
-        flex-direction: row;
-        position: static;
-        width: auto;
-        background: none;
-        padding: 0;
-        border-radius: 0;
-    }
-    
-    .navbar-expand-lg .navbar-toggler {
-        display: none;
-    }
-}
-
-@media (min-width: 992px) {
-    .custom-navbar .navbar-brand {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-}
-    .collapse.navbar-collapse {
-        position: absolute !important;
-        right: 0 !important;
-        top: 60px;
-        background-color: #582f0e;
-        width: 200px;
-        z-index: 1040;
-        padding: 0.5rem 1rem;
-        border-radius: 0 0 5px 5px;
-        flex-direction: column;
-        transform: none;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-    }
-
 @media (max-width: 576px) {
     #havainto-card {
         width: 90%;
@@ -72,7 +7,6 @@
 
 body {
     margin: 0;
-    padding-top: 60px;
     overflow-x: hidden;
 }
 
@@ -211,10 +145,11 @@ h2 {
   overflow-y: auto;  
 }
 
-/* Mobiilinäkymän navbarin ja yläreunan korjaukset */
+/* NAVBAR – MOBIILI JA DESKTOP */
+/* Mobiili */
 @media (max-width: 991.98px) {
 
-  /* Navbarin asetukset mobiilissa */
+  /* Navbarin perusasetukset mobiilissa */
   .custom-navbar {
     position: relative;
     height: 60px;
@@ -231,12 +166,33 @@ h2 {
     margin-left: 0 !important;
   }
 
-  /* Hampurilaisvalikon sijoitus oikeaan reunaan */
+  /* Hampurger-painike oikeaan reunaan */
   .custom-navbar .navbar-toggler {
     position: absolute;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+   /* Hamburger-valikon avautuminen navin alle */
+  .collapse.navbar-collapse {
+    position: absolute !important;
+    right: 0 !important;
+    top: 60px;
+    background-color: #582f0e;
+    width: 200px;
+    z-index: 1040;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 5px 5px;
+    flex-direction: column;
+    transform: none;
+  }
+
+  /* Valikon linkit pystysuunnassa mobiilissa */
+  .navbar-nav {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
   }
 
   /* Poistaa ylimääräisen paddingin container-fluidista mobiilissa */
@@ -245,22 +201,47 @@ h2 {
     padding-bottom: 0;
   }
 
+  /* Poistaa ylimääräisen tilan navin ja sisällön välistä */
+  body {
+    padding-top: 0 !important;
+    margin: 0;
+  }
+
   /* Poistaa ensimmäisen sisältöelementin ylämarginaalin */
   .hero, .hero-index {
     margin-top: 0 !important;
   }
-
-  /* Varmistus että body ei työnnä sisältöä liikaa alas */
-  body {
-    padding-top: 60px;
-    margin: 0;
-  }
 }
 
-/* Mobiilinäkymän body-korjaus */
-  @media (max-width: 991.98px) {
-  body {
-    padding-top: 0 !important; /* Poistaa ylimääräisen tilan navin ja sisällön välistä */
+/* DESKTOP */
+@media (min-width: 992px) {
+
+  /* Otsikon keskitys */
+  .custom-navbar .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Valikko inline-tilassa desktopissa */
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  /* Hamburger-painike piiloon desktopissa */
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+
+  /* Valikon linkit vaakasuunnassa desktopissa */
+  .navbar-nav {
+    flex-direction: row;
   }
 }
 
