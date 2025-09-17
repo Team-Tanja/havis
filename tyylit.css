@@ -126,7 +126,6 @@ h2 {
 /* Kortti isolla näytöllä hieman vasemmalla*/
 @media (min-width: 992px) {
     #havainto-card {
-        width: 300px;
         margin-left: -30%; /* aavistus vasemmalle */
     }
 }
