@@ -124,20 +124,19 @@ h2 {
 }
 
 /* Kortti isolla näytöllä hieman vasemmalla*/
-#havainto-card {
-    width: 300px;
-    max-width: 300px;
-    min-width: 300px;
-    margin-left: -30% !important;
+@media (min-width: 992px) {
+    #havainto-card {
+        width: 300px;
+        margin-left: -30%; /* aavistus vasemmalle */
+    }
 }
 
 /* Kortti keskitetään pienillä näytöillä*/
 @media (max-width: 991.98px) {
     #havainto-card {
         margin: 0 auto;
-        width: 90%;
+        width: 100%;
         max-width: 300px;
-        min-width: auto;
     }
 
     .hero-cards {
@@ -155,6 +154,12 @@ h2 {
   .kartta-card {
     width: 100%;
     max-width: 100%;
+  }
+
+  #havainto-card {
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
   }
 }
 
