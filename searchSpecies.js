@@ -117,6 +117,7 @@
 
     const hakunappi = document.getElementById("hakunappi");
     hakunappi.addEventListener("click", () => {
+      document.getElementById("tuloskortti").style.display = "block";
       const hakusana = document.getElementById("hakukentta").value.trim();
       const data = getStoredObservations();
 
