@@ -1,16 +1,12 @@
-/* Havainto -kortti */
-@media (max-width: 576px) {
-    #havainto-card {
-        width: 90%;
-        max-width: none;
-    }
-}
-
 /* Perusasetukset */
 body {
     margin: 0;
     overflow-x: hidden;
     padding-top: 60px;
+}
+
+h2 {
+    color: #582f0e;
 }
 
 /* Navbar */
@@ -58,6 +54,32 @@ body {
     background: transparent;
 }
 
+/* Navbar keskikokoiset näytöt*/
+@media (max-width: 1050px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex;
+        flex-direction: column; 
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background-color: #582f0e;
+        width: 200px;
+        padding: 0.5rem 1rem;
+        border-radius: 0 0 5px 5px;
+        z-index: 1040;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar-expand-lg .navbar-toggler {
+        display: block;
+    }
+}
+
 /* Hero-osio */
 .hero, .hero-index {
     background-image: url(kuvat/bird.jpg);
@@ -102,13 +124,11 @@ body {
 }
 
 /* Kortti isolla näytöllä hieman vasemmalla*/
-@media (min-width: 992px) {
-    #havainto-card {
-        width: 300px;
-        max-width: 300px;
-        min-width: 300px;
-        margin-left: -30% !important;
-    }
+#havainto-card {
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+    margin-left: -30% !important;
 }
 
 /* Kortti keskitetään pienillä näytöillä*/
@@ -123,10 +143,6 @@ body {
     .hero-cards {
         margin-left: 0;
     }
-}
-
-h2 {
-    color: #582f0e;
 }
 
 /* Kartta-kortti */
@@ -184,6 +200,8 @@ h2 {
 
    /* Hamburger-valikon avautuminen navin alle */
   .collapse.navbar-collapse {
+    display: none;
+    flex-direction: column !important;
     position: absolute !important;
     right: 0 !important;
     top: 60px;
@@ -192,8 +210,11 @@ h2 {
     z-index: 1040;
     padding: 0.5rem 1rem;
     border-radius: 0 0 5px 5px;
-    flex-direction: column;
-    transform: none;
+  }
+
+  /* Kun Bootstrap lisää .show -> näytä flexinä */
+  .collapse.navbar-collapse.show {
+    display: flex;
   }
 
   /* Valikon linkit pystysuunnassa mobiilissa */
@@ -232,7 +253,7 @@ h2 {
 
   /* Valikko inline-tilassa desktopissa */
   .navbar-expand-lg .navbar-collapse {
-    display: flex !important;
+    display: flex;
     flex-direction: row;
     position: static;
     width: auto;
