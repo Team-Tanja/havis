@@ -202,6 +202,27 @@ h2 {
   }
 }
 
+/* Keskikokoiset näytöt */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Haku-kortti vie 40% leveydestä */
+  #lajihaku .col-md-3 {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+
+  /* Kartta vie loput 60% */
+  #lajihaku .col-md-auto {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+
+  /* Kartta saa kasvaa täyteen sarakkeeseensa */
+  #lajihaku .kartta-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
 /* Lisäelementit */
 #vuosiInfo {
     font-size: 0.9rem;
