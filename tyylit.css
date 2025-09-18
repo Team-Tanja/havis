@@ -84,7 +84,7 @@ h2 {
 
 /* Showcase */
 .showcase {
-  background-color: #7f4f24;
+  background-color: rgba(127, 79, 36, 0.5);
   padding: 20px 10px 10px;
   min-height: auto;
   color: #ffe6a7;
@@ -126,6 +126,12 @@ h2 {
   min-height: auto;
   padding-top: 20px;
   margin-top: 0;
+}
+
+#index-showcase {
+  display: block;
+  padding: 80px 20px 20px;
+  min-height: auto;
 }
 
 /* Korttien kontaineri */
