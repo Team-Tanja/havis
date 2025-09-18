@@ -47,7 +47,7 @@
 
     havainnot.forEach(havainto => {
       const item = document.createElement("li");
-      item.textContent = `${havainto.bird} – ${havainto.placeName}, (${formatDateFi(havainto.date, true)})`;
+      item.textContent = `${havainto.bird} – ${havainto.placeName}, ${formatDateFi(havainto.date, true)}`;
       item.classList.add("list-group-item");
       listElement.appendChild(item);
     });
