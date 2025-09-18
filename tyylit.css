@@ -1,8 +1,10 @@
 /* Perusasetukset */
 body {
+    background-image: url(kuvat/bird.jpg);
+    background-size: cover;
+    background-position: center;
     margin: 0;
     overflow-x: hidden;
-    padding-top: 60px;
 }
 
 h2 {
@@ -80,21 +82,50 @@ h2 {
     }
 }
 
+/* Showcase */
+.showcase {
+  background-color: #7f4f24;
+  padding: 20px 10px 10px;
+  min-height: auto;
+  color: #ffe6a7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.showcase .container {
+  max-width: 800px;
+}
+
+.showcase h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.showcase p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0px;
+}
+
 /* Hero-osio */
 .hero, .hero-index {
-    background-image: url(kuvat/bird.jpg);
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-index {
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding-top: 80px; 
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 60px; 
+}
+
+/* Etusivun oma hero showcasen takia */
+#index-hero {
+  min-height: auto;
+  padding-top: 20px;
+  margin-top: 0;
 }
 
 /* Korttien kontaineri */
@@ -121,6 +152,10 @@ h2 {
 
 .card:hover {
     transform: scale(1.05);
+}
+
+#lisaa-havainto {
+  padding-top: 50px;
 }
 
 /* Kortti isolla näytöllä hieman vasemmalla*/
