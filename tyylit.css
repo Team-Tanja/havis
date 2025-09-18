@@ -258,6 +258,13 @@ h2 {
   }
 }
 
+/* Alamarginaali pienet ja keskikokoiset näytöt */
+@media (max-width: 991.98px) {
+  #lajihaku {
+    padding-bottom: 80px;
+  }
+}
+
 /* Lisäelementit */
 #vuosiInfo {
     font-size: 0.9rem;
