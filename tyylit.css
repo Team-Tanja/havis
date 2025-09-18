@@ -218,6 +218,14 @@ h2 {
   }
 }
 
+/* Havainnot vuosittain yläpadding */
+@media (min-width: 992px) {
+  #havainnot-vuosittain {
+    padding-top: 80px;
+  }
+}
+
+
 /* Kartta-kortti */
 .kartta-card {
     width: 300px;
