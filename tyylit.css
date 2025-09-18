@@ -236,10 +236,11 @@ h2 {
     min-height: 1.2em;
 }
 
-#hakutulokset {
-  max-height: 2x;
-  overflow-y: auto;  
+#tuloskortti {
+  max-height: 262px; /* rajoittaa kortin korkeuden */
+  overflow-y: auto;       
 }
+
 
 /* NAVBAR – MOBIILI JA DESKTOP */
 /* Mobiili */
