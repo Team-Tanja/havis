@@ -48,11 +48,15 @@ document.getElementById('havainto-form').addEventListener('submit', function(e) 
     // Havainto-objekti
     pendingHavainto = { bird, placeName, date, spot };
 
+    // Muutetaan päivämäärä pp.kk.vvvv-muotoon
+    const parts = date.split('-');
+    const finnishDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
+
     // Päivitetään modalin sisältö
     vahvistusTeksti.innerHTML = `
         <strong>Laji:</strong> ${bird}<br>
         <strong>Paikka:</strong> ${placeName}<br>
-        <strong>Päivämäärä:</strong> ${date}<br>`;
+        <strong>Päivämäärä:</strong> ${finnishDate}<br>`;
 
     // Näytetään modal
     vahvistusModal.show();
