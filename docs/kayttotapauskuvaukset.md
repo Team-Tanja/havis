@@ -7,17 +7,17 @@
 - Sovellus on käynnissä ja kartta ladattu  
 
 **Jälkiehto:**  
-- Uusi lintuhavainto on tallennettu järjestelmään  
+- Uusi lintuhavainto on tallennettu LocalStorageen  
 
 **Käyttötapauksen kulku:**  
 1. Käyttäjä valitsee valikosta "Lisää havainto"  
 2. Sovellus avaa havaintolomakkeen  
 3. Käyttäjä syöttää:
-   - Lintulajin nimi
-   - Havainnointipaikka: valinta kartalta ja kirjoitus kenttään
-   - Havainnointipäivämäärä  
+   - Lintulajin nimen
+   - Havainnointipaikan (valinta kartalta ja kirjoitus kenttään)
+   - Havainnointipäivämäärän  
 4. Käyttäjä vahvistaa ja tallentaa havainnon  
-5. Sovellus lisää havainnon tietokantaan  
+5. Sovellus lisää havainnon LocalStorageen  
 
 **Poikkeuksellinen toiminta:**  
 - Käyttäjä ei täytä kaikkia pakollisia kenttiä → sovellus näyttää virheilmoituksen
@@ -28,18 +28,18 @@
 
 **Laukaisija:** Käyttäjä valitsee valikosta "Hae lajia"  
 **Esiehto:**    
-- Sovellus on käynnissä, tietokanta käytettävissä ja kartta ladattu 
+- Sovellus on käynnissä, tallennettu havaintodata (LocalStorage) on käytettävissä ja kartta ladattu 
 
 **Jälkiehto:**  
-- Käyttäjä näkee valitun lintulajin tiedot ja havainnot kartalla  
+- Käyttäjä näkee valitun lintulajin tiedot ja havainnot listalla sekä kartalla  
 
 **Käyttötapauksen kulku:**  
 1. Käyttäjä valitsee valikosta "Hae lajia"  
 2. Sovellus avaa hakunäkymän ja kartan
 3. Käyttäjä syöttää lintulajin nimen hakukenttään  
-4. Sovellus hakee kaikki kyseisen lajin havainnot tietokannasta tai ilmoittaa jos syötetylle lajille ei ole havaintoja
+4. Sovellus hakee kaikki kyseisen lajin havainnot LocalStoragesta tai ilmoittaa, jos syötetylle lajille ei ole havaintoja
 5. Sovellus näyttää:
-   - Tuloket listana, jossa näkyy lajin nimi, paikkakunta ja havaintopäivämäärä 
+   - Tuloket listana (lajin nimi, paikkakunta, havaintopäivämäärä) 
    - Havainnointipaikat kartalla ja markkeria klikatessa samat tiedot kuin listassa
 
 **Poikkeuksellinen toiminta:**  
@@ -53,7 +53,7 @@
 Käyttäjä valitsee valikosta "Havainnot vuosittain"
 
 **Esiehto:**  
-- Sovellus on käynnissä, tietokanta käytettävissä ja kartta ladattu
+- Sovellus on käynnissä, tallennettu havaintodata (LocalStorage) on käytettävissä ja kartta ladattu
 
 **Jälkiehto:**  
 - Käyttäjä näkee kaikki syötetyn vuoden lintuhavainnot kartalla
@@ -61,9 +61,10 @@ Käyttäjä valitsee valikosta "Havainnot vuosittain"
 **Käyttötapauksen kulku:**
 1. Käyttäjä valitsee valikosta "Havainnot vuosittain"
 2. Sovellus avaa hakunäkymän ja kartan
-3. Sovellus hakee kaikki havainnot syötetyllä vuodella tai ilmoittaa jos syötetyllä vuodella ei ole havaintoja
+3. Käyttäjä syöttää vuoden
+3. Sovellus hakee kaikki havainnot syötetylle vuodelle LocalStoragesta tai ilmoittaa jos havaintoja ei ole
 4. Sovellus näyttää:
-   - Vuoden syöttökenttä ja kartta
+   - Vuoden syöttökentän ja kartan
    - Kaikki syötetyn vuoden havainnot kartalla ja markkeria klikatessa havainnon tiedot
 
 **Poikkeuksellinen toiminta:**
@@ -77,7 +78,7 @@ Käyttäjä valitsee valikosta "Havainnot vuosittain"
 Käyttäjä valitsee valikosta "Tilastot"
 
 **Esiehto:**    
-- Sovellus on käynnissä ja tietokanta käytettävissä
+- Sovellus on käynnissä ja tallennettu havaintodata (LocalStorage) on käytettävissä
 
 **Jälkiehto:**  
 - Käyttäjä näkee valitun vuoden lintuhavaintojen määrän ja lajilistan
@@ -86,7 +87,7 @@ Käyttäjä valitsee valikosta "Tilastot"
 1. Käyttäjä valitsee valikosta "Tilastot"
 2. Sovellus avaa tilastonäkymän
 3. Käyttäjä syöttää vuoden
-4. Sovellus hakee syötetyn vuoden havainnot tai lmoittaa jos syötetyllä vuodella ei ole havaintoja
+4. Sovellus hakee syötetyn vuoden havainnot LocalStoragesta tai ilmoittaa jos havaintoja ei ole
 4. Sovellus näyttää kaikki kyseisen vuoden havainnot päivämäärällä ja lajin nimellä listana päiväysjärjestyksessä
 
 **Poikkeuksellinen toiminta:**
