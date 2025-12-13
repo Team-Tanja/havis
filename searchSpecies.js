@@ -45,7 +45,7 @@
       return;
     }
 
-    havainnot.forEach((havainto, index) => {
+    havainnot.forEach((havainto) => {
       const item = document.createElement("li");
       item.classList.add(
         "list-group-item",
