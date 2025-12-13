@@ -60,7 +60,7 @@
 
       //Poista-nappi
       const deleteBtn = document.createElement("button");
-      deleteBtn.classList.add("btn", "btn-sm", "btn-danger");
+      deleteBtn.classList.add("btn", "btn-sm");
       deleteBtn.innerHTML = `<i class="bi bi-trash"></i> Poista`;
 
       deleteBtn.addEventListener("click", () => {
