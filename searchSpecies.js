@@ -45,12 +45,64 @@
       return;
     }
 
-    havainnot.forEach(havainto => {
+    havainnot.forEach((havainto, index) => {
       const item = document.createElement("li");
-      item.textContent = `${havainto.bird} – ${havainto.placeName}, ${formatDateFi(havainto.date, true)}`;
-      item.classList.add("list-group-item");
+      item.classList.add(
+        "list-group-item",
+        "d-flex",
+        "justify-content-between",
+        "align-items-center"
+      );
+
+      //Teksti
+      const textSpan = document.createElement("span");
+      textSpan.textContent = `${havainto.bird} - ${havainto.placeName}, ${formatDateFi(havainto.date, true)}`;
+
+      //Poista-nappi
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("btn", "btn-sm", "btn-danger");
+      deleteBtn.innerHTML = `<i class="bi bi-trash"></i> Poista`;
+
+      deleteBtn.addEventListener("click", () => {
+        deleteObservation(havainto);
+      });
+
+      item.appendChild(textSpan);
+      item.appendChild(deleteBtn);
+      //item.textContent = `${havainto.bird} – ${havainto.placeName}, ${formatDateFi(havainto.date, true)}`;
+      //item.classList.add("list-group-item");
       listElement.appendChild(item);
     });
+  }
+
+  //Poisto-funktio
+  function deleteObservation(poistettavaHavainto) {
+    if (!confirm("Haluatko varmasti poistaa tämän havainnon?")) {
+      return;
+    }
+
+    let allObservations = getStoredObservations();
+
+    //Poistetaan täsmälleen tämä havainto
+    allObservations = allObservations.filter(h =>
+      !(
+        h.bird === poistettavaHavainto.bird &&
+        h.date === poistettavaHavainto.date &&
+        h.placeName === poistettavaHavainto.placeName &&
+        h.spot.lat === poistettavaHavainto.spot.lat &&
+        h.spot.lng === poistettavaHavainto.spot.lng
+      )
+    );
+
+    //Tallennetaan takaisin localStorageen
+    localStorage.setItem("havainnot", JSON.stringify(allObservations));
+
+    //Päivitetään näkymä
+    const hakusana = document.getElementById("hakukentta").value.trim();
+    const filtered = filterObservations(allObservations, hakusana);
+
+    renderObservationList(filtered);
+    updateMapMarkers(filtered);
   }
 
   // Alustetaan Leaflet-kartta
